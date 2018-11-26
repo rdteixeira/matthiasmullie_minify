@@ -45,8 +45,9 @@ $(function() {
 			type: $form.attr('method'),
 			data: $form.serialize()
 		}).done(function(data, textStatus, jqXHR) {
-			// replace textarea content with minified script
-			$('#source').val(data.minified);
+			// replace textarea content with minified script & copy to clipboard
+			$('#source').val(data.minified).select();
+			document.execCommand('copy');
 
 			// display minifier gains
 			showSuccess(
